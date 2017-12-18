@@ -71,7 +71,8 @@ public class JaudiotaggerParser extends MetaDataParser {
     }
 
     /**
-     * Parses meta data for the given music file. No guessing or reformatting is done.
+     * Parses meta data for the given music file. No guessing or reformatting is
+     * done.
      *
      *
      * @param file The music file to parse.
@@ -92,6 +93,7 @@ public class JaudiotaggerParser extends MetaDataParser {
                 metaData.setGenre(mapGenre(getTagField(tag, FieldKey.GENRE)));
                 metaData.setDiscNumber(parseInteger(getTagField(tag, FieldKey.DISC_NO)));
                 metaData.setTrackNumber(parseTrackNumber(getTagField(tag, FieldKey.TRACK)));
+                metaData.setLyrics(getTagField(tag, FieldKey.LYRICS));
 
                 String songArtist = getTagField(tag, FieldKey.ARTIST);
                 String albumArtist = getTagField(tag, FieldKey.ALBUM_ARTIST);
@@ -105,7 +107,6 @@ public class JaudiotaggerParser extends MetaDataParser {
                 metaData.setBitRate((int) audioHeader.getBitRateAsNumber());
                 metaData.setDurationSeconds(audioHeader.getTrackLength());
             }
-
 
         } catch (Throwable x) {
             LOG.warn("Error when parsing tags in " + file, x);
@@ -131,8 +132,8 @@ public class JaudiotaggerParser extends MetaDataParser {
     }
 
     /**
-     * Sometimes the genre is returned as "(17)" or "(17)Rock", instead of "Rock".  This method
-     * maps the genre ID to the corresponding text.
+     * Sometimes the genre is returned as "(17)" or "(17)Rock", instead of
+     * "Rock". This method maps the genre ID to the corresponding text.
      */
     private String mapGenre(String genre) {
         if (genre == null) {
@@ -149,8 +150,8 @@ public class JaudiotaggerParser extends MetaDataParser {
     }
 
     /**
-     * Parses the track number from the given string.  Also supports
-     * track numbers on the form "4/12".
+     * Parses the track number from the given string. Also supports track
+     * numbers on the form "4/12".
      */
     private Integer parseTrackNumber(String trackNumber) {
         if (trackNumber == null) {
@@ -223,7 +224,7 @@ public class JaudiotaggerParser extends MetaDataParser {
     /**
      * Updates the given file with the given meta data.
      *
-     * @param file     The music file to update.
+     * @param file The music file to update.
      * @param metaData The new meta data.
      */
     @Override
@@ -266,7 +267,8 @@ public class JaudiotaggerParser extends MetaDataParser {
     }
 
     /**
-     * Returns whether this parser supports tag editing (using the {@link #setMetaData} method).
+     * Returns whether this parser supports tag editing (using the
+     * {@link #setMetaData} method).
      *
      * @return Always true.
      */
@@ -294,16 +296,16 @@ public class JaudiotaggerParser extends MetaDataParser {
 
         String format = FilenameUtils.getExtension(file.getName()).toLowerCase();
 
-        return format.equals("mp3") ||
-                format.equals("m4a") ||
-                format.equals("aac") ||
-                format.equals("ogg") ||
-                format.equals("flac") ||
-                format.equals("wav") ||
-                format.equals("mpc") ||
-                format.equals("mp+") ||
-                format.equals("ape") ||
-                format.equals("wma");
+        return format.equals("mp3")
+                || format.equals("m4a")
+                || format.equals("aac")
+                || format.equals("ogg")
+                || format.equals("flac")
+                || format.equals("wav")
+                || format.equals("mpc")
+                || format.equals("mp+")
+                || format.equals("ape")
+                || format.equals("wma");
     }
 
     /**
@@ -325,7 +327,8 @@ public class JaudiotaggerParser extends MetaDataParser {
      * Returns the cover art image data embedded in the given file.
      *
      * @param file The music file.
-     * @return The embedded cover art image data, or <code>null</code> if not available.
+     * @return The embedded cover art image data, or <code>null</code> if not
+     * available.
      */
     public byte[] getImageData(MediaFile file) {
         try {

@@ -40,7 +40,8 @@ import java.io.StringReader;
 import java.net.SocketException;
 
 /**
- * Provides AJAX-enabled services for retrieving song lyrics from chartlyrics.com.
+ * Provides AJAX-enabled services for retrieving song lyrics from
+ * chartlyrics.com.
  * <p/>
  * See http://www.chartlyrics.com/api.aspx for details.
  * <p/>
@@ -57,11 +58,11 @@ public class LyricsService {
      * Returns lyrics for the given song and artist.
      *
      * @param artist The artist.
-     * @param song   The song.
+     * @param song The song.
      * @return The lyrics, never <code>null</code> .
      */
     public LyricsInfo getLyrics(String artist, String song) {
-    	LyricsInfo lyrics = new LyricsInfo();
+        LyricsInfo lyrics = new LyricsInfo();
         try {
 
             artist = StringUtil.urlEncode(artist);
@@ -87,8 +88,8 @@ public class LyricsService {
         Namespace ns = root.getNamespace();
 
         String lyric = StringUtils.trimToNull(root.getChildText("Lyric", ns));
-        String song =  root.getChildText("LyricSong", ns);
-        String artist =  root.getChildText("LyricArtist", ns);
+        String song = root.getChildText("LyricSong", ns);
+        String artist = root.getChildText("LyricArtist", ns);
 
         return new LyricsInfo(lyric, artist, song);
     }

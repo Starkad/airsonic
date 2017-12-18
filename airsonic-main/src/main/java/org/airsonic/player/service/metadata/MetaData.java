@@ -21,6 +21,7 @@ package org.airsonic.player.service.metadata;
 
 /**
  * Contains meta-data (song title, artist, album etc) for a music file.
+ *
  * @author Sindre Mehus
  */
 public class MetaData {
@@ -38,6 +39,7 @@ public class MetaData {
     private Integer durationSeconds;
     private Integer width;
     private Integer height;
+    private String lyrics;
 
     public Integer getDiscNumber() {
         return discNumber;
@@ -142,4 +144,13 @@ public class MetaData {
     public void setHeight(Integer height) {
         this.height = height;
     }
+
+    public String getLyrics() {
+        return lyrics;
+    }
+
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
+    }
+
 }
